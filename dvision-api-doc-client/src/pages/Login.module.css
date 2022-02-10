@@ -1,0 +1,97 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(235, 235, 235);
+  /* background-image: linear-gradient(235deg,#3504ff,#9f52ff); */
+}
+
+/* .backgroundCover {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+} */
+
+.container {
+  width: 90vw;
+  height: 90vh;
+  box-shadow: 0px 0px 9px rgb(209, 209, 209);
+}
+
+.desContainer {
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 500px);
+  height: 100%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.desBackImg, .desFrontImg {
+  content: url("../assets/imgs/dvision\ poster.jpg");
+}
+
+.desBackImg {
+  width: 100%;
+  filter: blur(10px);
+}
+
+.desFrontImg {
+  height: 100%;
+}
+
+.desContainer video {
+  height: 100%;
+}
+
+.loginForm {
+  font-size: 2rem;
+  width: 100%;
+}
+
+.loginContainer {
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  height: 100%;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.loginTitle {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(#3504ff 10%, #9f52ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.loginAccountForm, .loginPasswordForm {
+  text-align: center;
+}
+
+label {
+  width: 500px;
+}
+
+.loginAccount, .loginPassword {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid gray;
+  height: 3rem;
+  font-size: 1.8rem;
+  transition: 0.5s;
+  padding: 0 10px 10px;
+}
+
+.loginAccount:focus, .loginPassword:focus {
+  border-bottom: 1px solid #3504ff;
+}
+
+.loginAccount:not(:placeholder-shown), .loginPassword:not(:placeholder-shown) {
+  border-bottom: 1px solid #3504ff;
+}

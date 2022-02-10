@@ -1,0 +1,9 @@
+type Member {
+  id: Int!
+  account: String!
+  admin: String!
+}
+
+type Query {
+  member(account: String!, password: String!): Member
+}
