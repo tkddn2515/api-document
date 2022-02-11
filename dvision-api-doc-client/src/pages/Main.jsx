@@ -1,5 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react'
-import styles from './Main.module.css';
+import React, { useState } from 'react'
 import { useQuery, gql } from "@apollo/client";
 
 import MainHeader from '../components/Main/MainHeader';

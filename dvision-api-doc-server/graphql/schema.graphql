@@ -8,6 +8,10 @@ type Api {
   id: Int!
   category: String!
   name: String!
+  method: String!
+  url: String!
+  query: String!
+  body: String!
 }
 
 type Query {
