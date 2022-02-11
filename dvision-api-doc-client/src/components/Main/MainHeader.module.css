@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  padding: 20px 50px;
+  border-bottom: 1px solid gray;
+}
+
+.logo {
+  content: url('../../assets/imgs/dvision_logo.svg');
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #9f52ff);
+  filter: opacity(.5) drop-shadow(0 0 0 #9f52ff);
+  cursor: pointer;
+}
+
+.profile {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.5rem;
+  float: right;
+  line-height: 45px;
+}
+
+.login {
+  cursor: pointer;
+}

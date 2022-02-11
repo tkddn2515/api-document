@@ -4,6 +4,14 @@ type Member {
   admin: String!
 }
 
+type Api {
+  id: Int!
+  category: String!
+  name: String!
+}
+
 type Query {
   member(account: String!, password: String!): Member
+  getApiList: [Api]
+  getApi(id: Int!): Api
 }

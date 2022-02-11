@@ -1,13 +1,10 @@
-import { login } from "./db.js";
-const mem = {
-  id: 1,
-  account: 'hane',
-  admin: 'ad'
-}
-console.log(mem);
+import { login, getApiList, getApi } from "./db.js";
+
 const resolvers = {
   Query: {
-    member:(_, { account, password }) => login(account, password)
+    member:(_, { account, password }) => login(account, password),
+    getApiList: () => getApiList(),
+    getApi:(_, { id }) => getApi(id)
   }
 }
 export default resolvers;

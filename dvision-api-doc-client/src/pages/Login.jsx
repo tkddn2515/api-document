@@ -1,9 +1,25 @@
-import React, { memo, useCallback, useState, useRef } from 'react'
+import React, { useCallback, useState, useRef, useEffect } from 'react'
 import styles from './Login.module.css';
-import { post } from '../api';
+import { useLazyQuery, gql } from "@apollo/client";
+import { useNavigate } from 'react-router';
+import { useSelector, useDispatch, connect } from 'react-redux';
+import { SET_MEMBER } from '../store';
 
 const Login = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	
+	const GET_LOGIN_RESULT = gql`
+		query GetLoginResult($account: String!, $password: String!){
+				member(account: $account, password: $password){
+					id
+					account
+					admin
+				}
+			}
+	`;
 
+	const member = useSelector(state => state.member);
   const [account, setAccount] = useState('');
   const [password, setPassword] = useState('');
   const accountRef = useRef(null);
@@ -17,11 +33,27 @@ const Login = () => {
     setPassword(e.target.value);
   }, []);
 
-  const onClickLogin = useCallback((e) => {
-    e.preventDefault();
-    post();
-  }, [])
+	const [onClickLogin, { loading, error, data, called }] = useLazyQuery(
+		GET_LOGIN_RESULT, {
+			variables: { account, password }
+		}
+	);
 
+	useEffect(() => {
+		if(data) {
+			if(data.member) {
+				console.log("data.member", data.member);
+				dispatch(SET_MEMBER(data.member));
+			}
+		}
+	}, [data])
+
+	useEffect(() => {
+		if(member){
+			navigate("/main");
+		}
+	}, [member])
+	
 	return (
 		<>
 			<div className={styles.background}>
@@ -56,7 +88,7 @@ const Login = () => {
                   ref={passwordRef}
 								/>
 							</div>
-							<button className="btn" onClick={onClickLogin}>
+							<button className="btn" type='button' onClick={() => onClickLogin()}>
 								START NOW
 							</button>
 						</form>

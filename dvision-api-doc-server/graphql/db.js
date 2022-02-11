@@ -15,3 +15,13 @@ export const login = async (account, password) => {
 	const [rows] = await db.query('SELECT id, account, admin FROM api_client_doc_member WHERE account = ? and password = ?', [account, password]);
 	return rows[0];
 }
+
+export const getApiList = async () => {
+  const [rows] = await db.query('SELECT * FROM api_client_doc_list');
+	return rows;
+}
+
+export const getApi = async (id) => {
+  const [rows] = await db.query('SELECT * FROM api_client_doc_list WHERE id = ?', [id]);
+	return rows[0];
+}
